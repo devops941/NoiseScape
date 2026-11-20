@@ -6,16 +6,17 @@ import {
   Navigation,
   Activity,
 } from 'lucide-react';
+import AcousticWaveVisualizer from '../components/common/AcousticWaveVisualizer';
 
 export default function LandingPage() {
   return (
     <div className="h-full flex flex-col justify-between py-1 sm:py-2">
       {/* HERO SECTION - SCREEN-FITTED HERO CARD */}
-      <section className="relative overflow-hidden rounded-3xl glass-card border border-white/10 px-6 py-6 sm:px-10 sm:py-7 lg:px-12 lg:py-8 shadow-2xl text-center space-y-4 sm:space-y-5 my-auto max-w-5xl mx-auto w-full">
+      <section className="relative overflow-hidden rounded-3xl glass-card border border-white/10 px-6 py-5 sm:px-10 sm:py-6 lg:px-12 lg:py-7 shadow-2xl text-center space-y-3 sm:space-y-4 my-auto max-w-5xl mx-auto w-full">
         {/* Ambient Top Glow Orbs */}
         <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-80 h-80 bg-gradient-to-br from-sky-500/20 to-indigo-500/15 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="relative z-10 space-y-3 sm:space-y-4">
+        <div className="relative z-10 space-y-2.5 sm:space-y-3">
           {/* Top Pill Badge */}
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-pill border border-sky-400/30 text-[11px] font-semibold text-sky-300 shadow-glass-glow-blue animate-float">
             <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-ping" />
@@ -35,8 +36,11 @@ export default function LandingPage() {
             AI-powered environmental sound pollution monitoring, predictive noise exposure analysis, and CPCB regulatory compliance for Madurai city.
           </p>
 
+          {/* Futuristic Acoustic Soundwave Equalizer Animation */}
+          <AcousticWaveVisualizer />
+
           {/* Direct Page Jump Buttons */}
-          <div className="flex flex-wrap items-center justify-center gap-3 pt-1">
+          <div className="flex flex-wrap items-center justify-center gap-3 pt-0.5">
             <Link
               to="/dashboard"
               className="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 shadow-glass-glow-blue transition-all duration-300 flex items-center gap-2 group cursor-pointer"
