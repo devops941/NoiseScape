@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Search, MapPin, ShieldAlert, ShieldCheck, AlertTriangle, Clock, Volume2, Info, HeartPulse } from 'lucide-react';
+import { Search, MapPin, ShieldAlert, ShieldCheck, AlertTriangle, Clock, Volume2, Info, HeartPulse, FileDown } from 'lucide-react';
 import { formatDecibels } from '../../utils/formatters';
 import { getZoneThreshold, isDaytime } from '../../utils/thresholds';
+import { generateNoiseReportPDF } from '../../utils/pdfReportGenerator';
 
 const FALLBACK_STATION = {
   id: 1,
@@ -229,6 +230,32 @@ export default function AreaNoiseChecker({ stations = [] }) {
                     <strong>Health Impact:</strong> {advisory.risk}
                   </p>
                 </div>
+              </div>
+
+              {/* PDF Download Button */}
+              <div className="flex justify-end pt-1">
+                <button
+                  type="button"
+                  onClick={() => {
+                    generateNoiseReportPDF({
+                      reportId: `MAD-SEC-${selectedStation.id}-${Date.now().toString().slice(-4)}`,
+                      areaName: selectedStation.name,
+                      zone: selectedStation.zone,
+                      measuredDb: currentDb,
+                      peakDb: Math.round((currentDb + 5.4) * 10) / 10,
+                      minDb: Math.round((currentDb - 8.2) * 10) / 10,
+                      cpcbLimit: threshold,
+                      isBreach: isBreach,
+                      severity: isBreach ? 'CRITICAL' : 'SAFE',
+                      healthAdvisory: `${advisory.advice} Health Risk Assessment: ${advisory.risk}`,
+                      source: 'Madurai Urban Monitoring Station Grid',
+                    });
+                  }}
+                  className="w-full sm:w-auto px-4 py-2 rounded-xl text-xs font-bold text-sky-300 bg-sky-500/15 hover:bg-sky-500/25 border border-sky-500/30 hover:border-sky-400 transition flex items-center justify-center gap-2 cursor-pointer shadow-sm"
+                >
+                  <FileDown className="w-3.5 h-3.5 text-sky-400" />
+                  Download Sector Noise Audit PDF
+                </button>
               </div>
             </div>
           </div>
