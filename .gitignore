@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Environments & Local Config
+.env
+.env.local
+.venv/
+env/
+venv/
+ENV/
+
+# Database & SQLite files
+*.sqlite3
+*.db
+backend/noise_monitor.db
+
+# Build outputs
+dist/
+build/
+*.egg-info/
+
+# Logs & Data
+*.log
+data/raw/*
+!data/raw/.gitkeep
+!data/raw/madurai_noise_readings.csv
+data/processed/*
+!data/processed/.gitkeep
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+

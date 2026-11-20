@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Periyar Bus Stand Terminal",
+    "zone": "COMMERCIAL",
+    "latitude": 9.9158,
+    "longitude": 78.1117,
+    "description": "Central transit hub & railway junction zone, Madurai"
+  },
+  {
+    "name": "Mattuthavani Integrated Bus Terminus (MIBT)",
+    "zone": "COMMERCIAL",
+    "latitude": 9.9439,
+    "longitude": 78.1561,
+    "description": "M.G.R. Bus Stand & vegetable market commercial area, Madurai"
+  },
+  {
+    "name": "Anna Nagar Residential Sector",
+    "zone": "RESIDENTIAL",
+    "latitude": 9.9263,
+    "longitude": 78.1500,
+    "description": "Anna Nagar 80 Feet Road & residential layout, Madurai"
+  },
+  {
+    "name": "Kalavasal Junction",
+    "zone": "COMMERCIAL",
+    "latitude": 9.9303,
+    "longitude": 78.0955,
+    "description": "Theni Main Road & bypass junction high-traffic zone, Madurai"
+  },
+  {
+    "name": "Government Rajaji Hospital (GRH)",
+    "zone": "SILENT",
+    "latitude": 9.9288,
+    "longitude": 78.1292,
+    "description": "Goripalayam medical college & hospital silent zone, Madurai"
+  },
+  {
+    "name": "Kappalur Industrial Estate",
+    "zone": "INDUSTRIAL",
+    "latitude": 9.8450,
+    "longitude": 78.0560,
+    "description": "SIDCO Industrial estate manufacturing boundary, Madurai"
+  }
+]
