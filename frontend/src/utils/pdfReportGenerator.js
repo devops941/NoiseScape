@@ -402,3 +402,4 @@ export function generateNoiseReportPDF({
   printWindow.document.write(htmlContent);
   printWindow.document.close();
 }
+
