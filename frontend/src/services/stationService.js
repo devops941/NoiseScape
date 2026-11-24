@@ -15,5 +15,10 @@ export const stationService = {
    * Register a new station
    */
   create: (stationData) => api.post('/stations', stationData),
+
+  /**
+   * Update an existing station by ID
+   */
+  update: (id, stationData) => api.put(`/stations/${id}`, stationData),
 };
 

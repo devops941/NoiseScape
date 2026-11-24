@@ -17,11 +17,11 @@ class StationCreate(StationBase):
 
 
 class StationUpdate(BaseModel):
-    name: Optional[str] = None
+    name: Optional[str] = Field(None, min_length=1, max_length=100)
     zone: Optional[ZoneType] = None
     status: Optional[StationStatus] = None
-    latitude: Optional[float] = None
-    longitude: Optional[float] = None
+    latitude: Optional[float] = Field(None, ge=-90.0, le=90.0)
+    longitude: Optional[float] = Field(None, ge=-180.0, le=180.0)
     description: Optional[str] = None
 
 

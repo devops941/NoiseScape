@@ -59,3 +59,39 @@ def get_station(station_id: int, db: Session = Depends(get_db)):
     res.latest_decibel = latest.decibel_value if latest else None
     return res
 
+
+@router.put("/{station_id}", response_model=StationResponse)
+@router.patch("/{station_id}", response_model=StationResponse)
+def update_station(
+    station_id: int,
+    station_in: StationUpdate,
+    db: Session = Depends(get_db)
+):
+    """Update details of an existing noise monitoring station."""
+    station = db.query(Station).filter(Station.id == station_id).first()
+    if not station:
+        raise HTTPException(status_code=404, detail="Station not found")
+
+    update_data = station_in.model_dump(exclude_unset=True)
+
+    # Check unique name if name is being changed
+    if "name" in update_data and update_data["name"] and update_data["name"].strip():
+        new_name = update_data["name"].strip()
+        if new_name != station.name:
+            existing = db.query(Station).filter(Station.name == new_name).first()
+            if existing:
+                raise HTTPException(status_code=400, detail="A station with this name already exists")
+        update_data["name"] = new_name
+
+    for field, value in update_data.items():
+        setattr(station, field, value)
+
+    db.commit()
+    db.refresh(station)
+
+    latest = db.query(NoiseReading).filter(NoiseReading.station_id == station.id).order_by(NoiseReading.recorded_at.desc()).first()
+    res = StationResponse.model_validate(station)
+    res.latest_decibel = latest.decibel_value if latest else None
+    return res
+
+
